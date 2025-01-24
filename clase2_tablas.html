@@ -1,0 +1,61 @@
+<!-- html:5 para obtener este formato -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas</title>
+</head>
+
+<body>
+    <h1>Uso de tablas</h1>
+    <table border="1"> <!-- mala práctica xd -->
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th colspan="2">Nombre completo</th>
+                <th>Calificación</th>
+            </tr>
+        </thead> <!-- aquí termina el encabezado -->
+        <tbody>
+            <tr>
+                <th>12345</th> <!-- th = negritas -->
+                <th>Benjamin</th>
+                <th>Barona</th>
+                <th>9.9</th>
+            </tr>
+            <tr>
+                <td>67890</td>
+                <td>Luis</td>
+                <td>Lagos</td>
+                <td>5.9</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <hr />
+    <h1>Formularios</h1>
+    <form method="post" action="index.html"> <!-- lo hace parte de un formulario -->
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" name="nombre" placeholder="Ingrese nombre" value="Benjamin" id="nombre" required />
+        <!-- value : valor default -->
+        <br />
+        <label>Fecha de nacimiento</label>
+        <input type="date" name="fecha_nacimiento" placeholder="dd/mm/aaaa" />
+        <br />
+        <label>Carrera</label>
+        <select name="carreras"> <!-- lista desplegable -->
+            <option value="">Seleccione una carrera</option>
+            <option value="1">Ingeniería en TI</option>
+            <option value="2">Ingeniería industrial</option>
+            <option value="3" selected>Arquitectura</option>
+        </select>
+        <br />
+        <input type="checkbox" name="terminos" checked/> Accepto los terminos de privacidad
+        <br />
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+
+</html>
