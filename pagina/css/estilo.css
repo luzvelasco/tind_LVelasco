@@ -83,6 +83,10 @@ main section h1 {
     padding-bottom: 20px;
 }
 
+main section img {
+    margin-left: 20px;
+}
+
 .imagen-derecha {
     float: right;
     width: 350px;
