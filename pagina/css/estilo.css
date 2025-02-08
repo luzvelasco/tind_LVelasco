@@ -64,8 +64,10 @@ a:hover {
 
 #slide p {
     font-size: 18px;
-    color: pink;
+    color: rgb(255, 221, 226);
     width: 40%;
+    text-shadow: black 2px 0 10px;
+    padding-top: 20px;
 }
 
 main section {
