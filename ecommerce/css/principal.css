@@ -1,0 +1,7 @@
+.btn-pink{
+    background-color: palevioletred;
+}
+.btn-pink:hover{
+    background-color: rgb(231, 151, 178);
+    border: solid 1 px rgb(212, 122, 137);
+}
