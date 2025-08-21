@@ -20,8 +20,8 @@ export default function Actividades() {
     const [descripcion, setDescripcion] = useState('');
 
     return (
-        <View style={{ padding: 20 }}>
-            <Text style={{ fontSize: 25 }}>
+        <View style={{ padding: 25 }}>
+            <Text style={{ fontSize: 22 }}>
                 Agenda Universitaria
             </Text>
 
@@ -36,7 +36,7 @@ export default function Actividades() {
                 onPress={agregarActividad}
             />
 
-            <Text style={{ fontSize: 20, paddingTop: 10 }}>
+            <Text style={{ fontSize: 18, paddingTop: 20 }}>
                 Lista de Actividades
             </Text>
 
