@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native";
 
 export default function Login({navigation}) {
@@ -21,10 +21,12 @@ export default function Login({navigation}) {
                 Log In
             </Text>
             <TextInput
+                style={styles.input}
                 placeholder="Correo electrónico"
                 onChangeText={setCorreo}>
             </TextInput>
             <TextInput
+                style={styles.input}
                 placeholder = "constraseña"
                 onChangeText={setContrasena}>
             </TextInput>
@@ -37,3 +39,15 @@ export default function Login({navigation}) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    contendedor: {
+        flex: 1,
+        padding: 20,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#dddd',
+        marginBottom: 10,
+    }
+})
