@@ -16,23 +16,26 @@ export default function Login({navigation}) {
     }
 
     return (
-        <View>
-            <Text>
+        <View style={styles.contenedor}>
+            <Text
+                style={styles.titulo} >
                 Log In
             </Text>
             <TextInput
                 style={styles.input}
-                placeholder="Correo electrónico"
+                placeholder="correo electrónico"
                 onChangeText={setCorreo}>
             </TextInput>
             <TextInput
                 style={styles.input}
-                placeholder = "constraseña"
+                placeholder = "contraseña"
                 onChangeText={setContrasena}>
             </TextInput>
             <TouchableOpacity
+                style={styles.boton}
                 onPress={verificarLogin}>
-                <Text>
+                <Text
+                    style={styles.botonTexto}>
                     Ingresar
                 </Text>
             </TouchableOpacity>
@@ -41,13 +44,36 @@ export default function Login({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    contendedor: {
+    contenedor: {
         flex: 1,
+        justifyContent: 'center',
         padding: 20,
+        backgroundColor: '#f5f5f5',
+    },
+    titulo: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 30,
     },
     input: {
-        borderWidth: 1,
-        borderColor: '#dddd',
-        marginBottom: 10,
-    }
+        borderWidth:1,
+        borderColor: '#ddd',
+        borderRadius: 8,
+        padding: 15,
+        marginBottom: 15,
+        backgroundColor: 'white',
+        fontSize: 16,
+    },
+    boton: {
+        backgroundColor: '#007AFF',
+        borderRadius: 8,
+        padding: 15,
+        alignItems: 'center',
+    },
+    botonTexto: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
 })
