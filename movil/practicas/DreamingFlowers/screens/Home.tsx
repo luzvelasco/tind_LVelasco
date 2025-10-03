@@ -1,5 +1,5 @@
 import { use, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View, TextInput, ActivityIndicator, FlatList } from "react-native";
+import { Text, TouchableOpacity, View, TextInput, ActivityIndicator, FlatList, StyleSheet } from "react-native";
 
 export default function Home({ navigation }) {
 
@@ -21,21 +21,26 @@ export default function Home({ navigation }) {
 
     console.log(posts)
 
-    const renderPost = ({ item }) => {
+    const renderPost = ({ item }) => (
         <TouchableOpacity
-            onPress={() => alert('Post seleccionado: ' + item.id)}>
-            <Text>
+            // onPress={() => alert('Post seleccionado: ' + item.id)}
+            onPress={() => navigation.navigate('Post', { post: item })}>
+            <Text
+                style={style.tituloPost}>
                 {item.title}
             </Text>
-            <Text>
+            <Text
+                numberOfLines={2}
+                style={style.descripcionPost}>
                 {item.body}
             </Text>
         </TouchableOpacity>
-    }
+    )
 
     if (loading) {
         return (
-            <View>
+            <View
+                style={style.contenedor}>
                 <ActivityIndicator />
                 <Text>
                     Cargando...
@@ -45,11 +50,13 @@ export default function Home({ navigation }) {
     }
 
     return (
-        <View>
+        <View
+            style={style.contenedor}>
             <Text>
                 LISTA DE POSTS
             </Text>
             <FlatList
+                style={style.listaPosts}
                 data={posts}
                 renderItem={renderPost}
                 keyExtractor={item => item.id.toString()}
@@ -58,3 +65,25 @@ export default function Home({ navigation }) {
         </View>
     )
 }
+
+const style = StyleSheet.create({
+
+    contenedor: {
+        flex: 1,
+        padding: 15,    
+        backgroundColor: '#e0a8feff'
+    },
+    listaPosts: {
+        flex: 1
+    },
+    tituloPost: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        marginTop: 10,
+        borderRadius: 8
+    },
+    descripcionPost: {
+        fontSize: 14,
+        color: '#5d00ffff'
+    }
+})

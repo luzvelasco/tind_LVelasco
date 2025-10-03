@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native";
 
 export default function Login({navigation}) {
@@ -16,7 +16,7 @@ export default function Login({navigation}) {
     }
 
     return (
-        <View style={styles.contenedor}>
+        <ScrollView style={styles.contenedor}>
             <Text
                 style={styles.titulo} >
                 Log In
@@ -39,14 +39,14 @@ export default function Login({navigation}) {
                     Ingresar
                 </Text>
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     contenedor: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         padding: 20,
         backgroundColor: '#f5f5f5',
     },

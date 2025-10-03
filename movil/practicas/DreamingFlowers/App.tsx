@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Splash from './screens/Splash';
 import Login from './screens/Login';
 import Home from './screens/Home';
+import Post from './screens/Post';
 
 const Stack = createStackNavigator();
 
@@ -22,18 +23,15 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen
           name='Home'
+          options={{title: 'Lista de Posts'}}
           component={Home}>
+        </Stack.Screen>
+        <Stack.Screen
+          name='Post'
+          options={{title: 'Detalles del Post'}}
+          component={Post}>
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffd1ebff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
