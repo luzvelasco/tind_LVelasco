@@ -72,8 +72,8 @@ const style = StyleSheet.create({
     contenedor: {
         flex: 1,
         padding: 15,    
-        // backgroundColor: '#e0a8feff'
-        backgroundColor: '#000000ff'
+        backgroundColor: '#e0a8feff'
+        // backgroundColor: '#000000ff'
     },
     titulo: {
         fontSize: 24,
@@ -95,7 +95,7 @@ const style = StyleSheet.create({
     },
     descripcionPost: {
         fontSize: 14,
-        // color: '#5d00ffff'
-        color: '#19fb3fff'
+        color: '#5d00ffff'
+        // color: '#19fb3fff'
     }
 })
