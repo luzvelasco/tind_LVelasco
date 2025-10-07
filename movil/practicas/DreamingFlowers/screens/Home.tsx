@@ -52,7 +52,8 @@ export default function Home({ navigation }) {
     return (
         <View
             style={style.contenedor}>
-            <Text>
+            <Text
+                style={style.titulo}>
                 LISTA DE POSTS
             </Text>
             <FlatList
@@ -71,7 +72,15 @@ const style = StyleSheet.create({
     contenedor: {
         flex: 1,
         padding: 15,    
-        backgroundColor: '#e0a8feff'
+        // backgroundColor: '#e0a8feff'
+        backgroundColor: '#000000ff'
+    },
+    titulo: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 30,
+        color: '#ff0202ff',
     },
     listaPosts: {
         flex: 1
@@ -80,10 +89,13 @@ const style = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
         marginTop: 10,
-        borderRadius: 8
+        borderRadius: 8,
+        // color: '#fbca19ff'
+        color: '#2164feff'
     },
     descripcionPost: {
         fontSize: 14,
-        color: '#5d00ffff'
+        // color: '#5d00ffff'
+        color: '#19fb3fff'
     }
 })

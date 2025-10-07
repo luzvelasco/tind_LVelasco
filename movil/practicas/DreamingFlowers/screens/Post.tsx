@@ -50,7 +50,7 @@ const style = StyleSheet.create({
         marginBottom: 10,
         fontSize: 16,
         lineHeight: 24,
-        color: '#fbca19ff'
+        color: '#ffffffff'
     },
     identificador: {
         fontSize: 30,
