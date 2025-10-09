@@ -14,5 +14,6 @@ export type NavTabsParams = {
 export type NavDrawerParams = {
     Bookings: undefined;
     Profile: undefined;
+    Home: NavigatorScreenParams<NavStackParams>;
 
 }
