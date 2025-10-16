@@ -1,74 +1,57 @@
 const express = require('express')
-const swaggerJsDoc = require('swagger-jsdoc') // npm i swagger-jsdoc
-const swaggerUi = require('swagger-ui-express') // npm i swagger-ui-express
 const cors = require('cors') // npm i cors
-const mysql = require('mysql2') // BD
 require('dotenv').config() // npm i dotenv
 
-const toursRoutes = require('./routes/tours')
-const  { swaggerUi , swaggerJsDoc } = require('swagger-ui-express')
-const app = express()
+// archivo de las rutas
+const toursRoutes = require('./routes/tours.routes')
+// conf de swagger
+const  { swaggerUi , swaggerDocs } = require('./swagger')
 
-// app.use(express.json())
-// const port = 3000
-// const bd = mysql.createConnection({
-//     host: '127.0.0.1',
-//     user: 'root',
-//     password: 'v5090L03',
-//     database: 'agencia'
-// })
+const app = express();
 
-// ------------------------ CONECTAR CON MYSQL ------------------------
-bd.connect((error) => {
-    if (error) {
-        console.log('ERROR al conectar: ' + error.stack)
-        return;
-    }
-    console.log('conectado a mysql [:')
-})
+const port = process.env.PORT || 3000;
 
-// ------------------------ RUTA PARA MOSTRAR TODOS LOS TOURS ------------------------
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-/**
- * @swagger
- * /tours:
- *  get:
- *   summary: Listado de tours
- *   tags: [Tours]
- *   response:
- *      200:
- *          description: Listado de tours
- */
+// ------------------------ RUTAS ------------------------
 
-app.get('/tours', (req, res) => {
-    bd.query('SELECT * FROM Tours', (error, results) => {
-        if (error) {
-            console.log('error al ejecutar la consulta: ' + error.stack)
+// RUTA PRINCIPAL
+app.get('/', (req, res) => {
+    res.json({
+        message: 'API de Tours - Home',
+        version: '1.0.0',
+        endpoint: {
+            tours: 'api/tours',
+            documentation: '/api-docs'
         }
-        res.json(results)
     })
 })
 
-app.get('/', (req, res) => {
-    res.send('API de App Tours')
+// RUTAS DE LA API
+app.use('/api/tours', toursRoutes)
+
+// CONFIGURAR SWAGGER
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
+// RUTAS 404
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        message: 'ruta no encontrada'
+    })
 })
 
-
-// ------------------------ CONFIGURAR SWAGGER ------------------------
-const swagggerOptions = {
-    swaggerDefinition: {
-        openapi: '3.1.0',
-        info: {
-            title: 'API de App Tours',
-            version: '1.0.0',
-            description: 'API de la app de tours'
-        },
-    },
-    apis: ['*.js'],
-}
-
-const swaggerDocs = swaggerJsDoc(swagggerOptions)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+// ------------------------ MANEJO DE ERRORES ------------------------
+app.use((error,req,res,nect)=>{
+    console.error(error.stack);
+    res.status(500).json({
+        success:false,
+        message:"Eror interno",
+        error:error.message
+    })
+})
 
 app.listen(port, () => {
     console.log('Servidor desde puerto ' + port)
