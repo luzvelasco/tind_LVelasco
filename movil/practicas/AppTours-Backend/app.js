@@ -3,16 +3,20 @@ const swaggerJsDoc = require('swagger-jsdoc') // npm i swagger-jsdoc
 const swaggerUi = require('swagger-ui-express') // npm i swagger-ui-express
 const cors = require('cors') // npm i cors
 const mysql = require('mysql2') // BD
+require('dotenv').config() // npm i dotenv
 
+const toursRoutes = require('./routes/tours')
+const  { swaggerUi , swaggerJsDoc } = require('swagger-ui-express')
 const app = express()
-app.use(express.json())
-const port = 3000
-const bd = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'v5090L03',
-    database: 'agencia'
-})
+
+// app.use(express.json())
+// const port = 3000
+// const bd = mysql.createConnection({
+//     host: '127.0.0.1',
+//     user: 'root',
+//     password: 'v5090L03',
+//     database: 'agencia'
+// })
 
 // ------------------------ CONECTAR CON MYSQL ------------------------
 bd.connect((error) => {
