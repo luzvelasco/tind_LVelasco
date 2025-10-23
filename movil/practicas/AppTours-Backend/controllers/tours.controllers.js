@@ -84,8 +84,78 @@ const createTour = async (req, res) => {
     }
 }
 
+// Actualizar un tour
+const updateTour = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, descripcion, imagen, precio, categoria, estatus } = req.body;
+        // verificar si el tour existe
+        const [tourExistente] = await bd.query('SELECT * FROM Tours WHERE idTour = ?', [id]);
+        if (tourExistente.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Tour no encontrado'
+            });
+        }
+        const [result] = await bd.query(
+            'UPDATE Tours SET nombre = ?, descripcion = ?, precio = ?, estatus = ?, categoria = ?, imagen = ? WHERE idTour = ?'
+            [nombre, descripcion, precio, estatus, categoria, imagen, id]
+        );
+        res.json({
+            success: true,
+            message: 'Tour actualizado exitosamente',
+            data: {
+                id,
+                nombre,
+                descripcion,
+                precio,
+                estatus,
+                categoria,
+                imagen
+            }
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'error al actualizar el tour',
+            error: error.message
+        });
+    };
+}
+
+// ELIMINAR UN TOUR
+const deleteTour = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // verificar si el tour existe
+        const [tourExistente] = await bd.query('SELECT * FROM Tours WHERE idTour = ?', [id]);
+        if (tourExistente.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'tour no encontrado'
+            });
+        }
+
+        await bd.query('DELETE FROM Tours WHERE idTour = ?', [id]);
+
+        res.json({
+            success: true,
+            message: 'tour eliminado exitosamente'
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'error al eliminar el tour',
+            error: error.message
+        });
+    }
+};
+
 module.exports = {
     getAllTours,
     getTourById,
-    createTour
+    createTour,
+    updateTour,
+    deleteTour
 }

@@ -80,7 +80,69 @@ router.get('/:id', toursController.getTourById)
 *      400:
 *        description: Datos inválidos
 */
-
 router.post('/', toursController.createTour);
 
+// Actualizar tour
+
+/**
+ * @swagger
+ * /api/tours/{id}:
+ *   put:
+ *      summary: Actualizar un tour
+ *      tags: [Tours]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: integer
+ *          required: true
+ *          description: ID del tour
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                nombre:
+ *                  type: string
+ *                descripcion:
+ *                  type: string
+ *                imagen:
+ *                  type: string
+ *                precio:
+ *                  type: number
+ *                categoria:
+ *                  type: number
+ *                estatus:
+ *                  type: number
+ *      responses:
+ *        200:
+ *          description: tour actualizado exitosamente
+ *        400:
+ *          description: tour no encontrado
+ */
+router.put('/:id', toursController.updateTour);
+
+// Eliminar tour
+
+/**
+ * @swagger
+ * /api/tours/{id}:
+ *   delete:
+ *     summary: Eliminar un tour
+ *     tags: [Tours]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID del tour
+ *     responses:
+ *       200:
+ *         description: tour eliminado exitosamente
+ *      404:
+ *         description: tour no encontrado
+ */
 module.exports = router
