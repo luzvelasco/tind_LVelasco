@@ -1,6 +1,6 @@
 import { NavigatorScreenParams } from "@react-navigation/native"
 
-export type TabStack = {
+export type NavStackParams = {
     TourList:NavigatorScreenParams<NavTabsParams>;
     TourDetails:{tourId:string};
 }
@@ -17,3 +17,5 @@ export type NavDrawerParams = {
     Home: NavigatorScreenParams<NavStackParams>;
 
 }
+
+export const API_URL = 'http://localhost:3001/api';
